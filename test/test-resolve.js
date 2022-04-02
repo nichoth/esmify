@@ -5,6 +5,19 @@ const resolve = require('../resolve');
 
 const fixtures = path.resolve(__dirname, 'fixtures');
 
+// https://nodejs.org/api/packages.html
+
+// If both "exports" and "main" are defined, the "exports" field takes
+// precedence over "main"
+
+// https://nodejs.org/api/packages.html#dual-commonjses-module-packages
+
+// Warning: Introducing the "exports" field prevents consumers of a
+// package from using any entry points that are not defined
+
+// package encapsulation can be disabled entirely by creating an export for
+// the root of the package "./*": "./*".
+
 const run = (mainFields, expected, parent = 'pkg-fields') => {
   const defaultFields = [ 'browser', 'module', 'main' ];
   test(`should handle ${(mainFields || defaultFields).join(', ')}`, t => {

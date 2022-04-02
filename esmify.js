@@ -41,6 +41,21 @@ module.exports = function (bundler, pluginOpts = {}) {
       mainFields,
       basedir: opts.basedir || path.dirname(opts.filename)
     });
+
+
+
+    // read the package.json of the destination
+    // look for `exports`
+    // if present, then the id should be exports['my-id']
+    // https://nodejs.org/api/packages.html#package-entry-points
+    //"exports": {
+    //   ".": "./lib/index.js",
+    // }
+
+
+    console.log('*******id********', id)
+
+
     return resolve(id, opts, (err, result, pkg) => {
       if (err) {
         // Provide cleaner error messaging for end-user

@@ -39,6 +39,20 @@ module.exports = function (id, opts, cb) {
       return info;
     }
   });
+
   delete opts.mainFields;
+
+  // this is changing from one file/path per module, to many files
+  // the import statement though is still one file
+
+  // need to change the imported id so that it is compatible with the node
+  // algorithm
+
+  // if there is an `exports` field in package.json, then use it to resolve
+  // the imported file id
+
+  // convert the imported file + `exports` to a node file id
+
+  // id is the file path that you are importing
   return resolve(id, opts, cb);
 };
